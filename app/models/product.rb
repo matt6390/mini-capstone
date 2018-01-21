@@ -1,11 +1,7 @@
 class Product < ApplicationRecord
 
   def is_discounted
-    if price < 30 
-      true
-    else 
-      false
-    end 
+    price < 30  #this is a replacement for the if statement that I had there earlier, since our code is trying to find a true or false answer, we dont need to run an entire block of code, we just have to get that true/false answer
   end
 
   def tax
