@@ -1,8 +1,6 @@
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Product.create!([
+  {name: "Constant Calculator", price: "25.0", image_url: "https://compass1.org/wp-content/uploads/2015/06/Calculator_clipped_rev_1.png", description: "Ever wanted to find what the value of that constant is?", on_sale: false},
+  {name: "One-Eyed Teddy", price: "200.0", image_url: "https://endlessfalling.files.wordpress.com/2013/07/3459_l.jpg", description: "A special teddy with a dark story.", on_sale: false},
+  {name: "Capstone Cookbook", price: "150.0", image_url: "http://www.iccmarydel.org/uploads/6/9/0/4/69049539/8606531_orig.jpg", description: "Want to make the greatest capstone that there ever was?!?!?!", on_sale: false},
+  {name: "", price: nil, image_url: "", description: "", on_sale: nil}
+])

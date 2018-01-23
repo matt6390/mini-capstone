@@ -29,6 +29,7 @@ class Product < ApplicationRecord
               tax: tax,
               total: total,
               image_url: image_url,
+              on_sale: on_sale,
               description: description,
               created_at: friendly_created_at,
               updated_at: friendly_updated_at

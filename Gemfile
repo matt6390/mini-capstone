@@ -21,7 +21,7 @@ gem 'puma', '~> 3.7'
 gem 'tty-table'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'seed_dump'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
