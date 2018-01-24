@@ -1,15 +1,23 @@
 class Product < ApplicationRecord
 
+  validates :name, presence: true
+  validates :name, uniqueness: true
+
+  validates :price, presence: true
+  validates :price, numericality: {greater_than: 0}
+
+  validates :description, length: { in 10..500}
+
   def is_discounted
-    price < 30  #this is a replacement for the if statement that I had there earlier, since our code is trying to find a true or false answer, we dont need to run an entire block of code, we just have to get that true/false answer
+     price.to_i < 30
   end
 
   def tax
-    price * 0.09
+    price.to_i * 0.09
   end
 
   def total
-    tax + price
+    tax + price.to_i
   end
 
   def friendly_created_at
