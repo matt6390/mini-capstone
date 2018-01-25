@@ -2,8 +2,18 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all
-    render json: products.as_json
+    search_term = params[:search]
+
+    if search_term
+      products = products.where("name iLIKE ?", "%#{search_term}%")
+    end
+      render json: products.as_json
   end
+
+
+
+
+
 
   def create
     product = Product.new(
