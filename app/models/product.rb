@@ -28,20 +28,21 @@ class Product < ApplicationRecord
     updated_at.strftime("%m-%e-%y, %H:%M")
   end
 
-  def as_json
-            {
-              id: id,
-              name: name,
-              price: price,
-              is_discounted: is_discounted,
-              tax: tax,
-              total: total,
-              image_url: image_url,
-              on_sale: on_sale,
-              description: description,
-              created_at: friendly_created_at,
-              updated_at: friendly_updated_at
-            }
+  # def as_json     WE DONT NEED THIS ANYMORE, SINCE WE HAVE REPLACED IT WITH THE GLOBAL VARIABLES
+  
+  #           {
+  #             id: id,
+  #             name: name,
+  #             price: price,
+  #             is_discounted: is_discounted,
+  #             tax: tax,
+  #             total: total,
+  #             image_url: image_url,
+  #             on_sale: on_sale,
+  #             description: description,
+  #             created_at: friendly_created_at,
+  #             updated_at: friendly_updated_at
+  #           }
     
-  end
+  # end
 end
