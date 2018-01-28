@@ -18,10 +18,6 @@ class ProductsController < ApplicationController
       #this now does 2 different things depending on what the user has inputted
   end
 
-
-
-
-
   def create
     @product = Product.new(
                           name: params[:name],
@@ -34,7 +30,6 @@ class ProductsController < ApplicationController
     else
       render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
     end
-
   end
 
   def show
