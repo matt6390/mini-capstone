@@ -23,7 +23,8 @@ class ProductsController < ApplicationController
                           name: params[:name],
                           price: params[:price],
                           image_url: params[:image_url],
-                          description: params[:description]
+                          description: params[:description],
+                          supplier_id: params[:supplier_id]
                           )
     if @product.save
      render 'show.json.jbuilder'
@@ -45,6 +46,7 @@ class ProductsController < ApplicationController
     @product.image_url = params[:image_url] || @product.image_url
     @product.on_sale = params[:on_sale] || @product.on_sale
     @product.description = params[:description] || @product.description
+
     
     if @product.save
       render 'show.json.jbuilder'

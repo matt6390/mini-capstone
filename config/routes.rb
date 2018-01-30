@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   post "/products" => 'products#create'
   get "/products/:id" => 'products#show'
   patch "/products/:id" => 'products#update'
-  delete "products/:id" => 'products#destroy'
+  delete "/products/:id" => 'products#destroy'
+
+  get "/suppliers/:id" => 'suppliers#show'
+  post "/users" => 'users#create'
 end
