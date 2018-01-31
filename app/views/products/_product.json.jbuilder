@@ -18,3 +18,4 @@ json.formatted do
 
 
 json.supplier product.supplier
+json.order product.orders
