@@ -3,6 +3,9 @@ class Product < ApplicationRecord
   has_many :orders
   has_many :pictures
 
+  has_many :product_categories
+  has_many :categories, through: :product_categories
+
 
 
   validates :name, presence: true

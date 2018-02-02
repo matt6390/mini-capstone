@@ -7,18 +7,14 @@ class OrdersControllerController < ApplicationController
   end
 
   def create
-    subtotal = Product.find(params[:product_id]).price * params[:quantity].to_i
-    tax = subtotal * 0.09
-    total = tax + subtotal
 
     @order = Order.new(
                       user_id: current_user.id,
                       product_id: params[:product_id],
-                      quantity: params[:quantity],
-                      subtotal: subtotal,
-                      tax: tax,
-                      total: total
+                      quantity: params[:quantity]
                       )
+    
+    @order.calculate_totals
     @order.save
     render 'show.json.jbuilder'
   end
