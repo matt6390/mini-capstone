@@ -11,25 +11,35 @@ class ProductsController < ApplicationController
 
     sort_attribute = params[:sort]
     if sort_attribute
-      @products = @products.order(sort_attribute => asc)
+      @products = @products.order(sort_attribute => :asc)
     end
-      render 'index.json.jbuilder'
+
+    category_name = params[:category]
+    if category_name
+      @products = Category.find_by(name: category_name).products
+    end
+
+
+
+    render 'index.json.jbuilder'
 
       #this now does 2 different things depending on what the user has inputted
   end
 
   def create
-    @product = Product.new(
-                          name: params[:name],
-                          price: params[:price],
-                          image_url: params[:image_url],
-                          description: params[:description],
-                          supplier_id: params[:supplier_id]
-                          )
-    if @product.save
-     render 'show.json.jbuilder'
-    else
-      render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
+    if current_user.admin 
+      @product = Product.new(
+                            name: params[:name],
+                            price: params[:price],
+                            image_url: params[:image_url],
+                            description: params[:description],
+                            supplier_id: params[:supplier_id]
+                            )
+      if @product.save
+       render 'show.json.jbuilder'
+      else
+        render json: {errors: @product.errors.full_messages}, status: :unprocessable_entity
+      end
     end
   end
 
