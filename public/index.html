@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- <link rel="/public/favicon" href="favicon.ico" type="image/x-icon"> favicon? -->
   <script src="index.js" defer></script>
 </head>
 <body>
@@ -23,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/#/signup">Thing<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/#/products/new">Create New Product<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -53,7 +54,9 @@
     <a href="/#/signup">SignUp</a>
     <a href="/#/login">Login</a>
     <a href="/#/logout">Logout</a>
-    
+    <a href="/#/products/new">New Product</a>
+    <a href="/#/products/6/edit">Edit Product</a>
+
     <router-view></router-view>
 
   </div>
@@ -133,5 +136,58 @@
   </div>
 </template>
 
+<template id="products-new-page">
+  <div class="vue-component">
 
+    <div class="container">
+      <h1>New Product</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Name:</label> 
+        <input type="text" class="form-control" v-model="name">
+      </div>
+      <div class="form-group">
+        <label>Price:</label>
+        <input type="text" class="form-control" v-model="price">
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="description">
+      </div>
+      <div class="form-group">
+        <label>Supplier ID:</label>
+        <input type="text" class="form-control" v-model="supplierId">
+      </div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
 
+  </div>
+</template>
+
+<template id="products-edit-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>Product To Be Edited (6)</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Name:</label> 
+        <input type="text" class="form-control" v-model="name">
+      </div>
+      <div class="form-group">
+        <label>Price:</label>
+        <input type="text" class="form-control" v-model="price">
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="description">
+      </div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+
+  </div>
+</template>
