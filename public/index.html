@@ -66,6 +66,7 @@
 </body>
 </html>
 
+<!-- Product Templates  -->
 <template id="home-page">
   <div class="vue-component">
     <div class="container">
@@ -75,14 +76,97 @@
   </div>
 </template>
 
-<template id="sample-page">
+<template id="products-index-page">
   <div class="vue-component">
     <div class="container">
-      <h1>{{ message }}</h1>
-      <a class="btn btn-primary" href="/#/">Go Home</a>
+      <div class="row">
+        <div v-for="product in products" class="col-md-4">
+          <div class="card mb-5">
+            <!-- <img class="card-img-top" v-bind:src="product.pictures[0].url"> -->
+            <div class="card-body">
+              <h1 class="card-title">{{ product.name}}</h1>
+              <p class="card-text">Price: {{ product.price}}</p>
+              <p class="card-text">Description: {{ product.description }} </p>
+              <p class="card-text">Supplier Id: {{ product.supplier_id }} </p>
+              <p class="card-text"> {{ product.id }} </p>
+              <a v-bind:href="'/#/products/' + product.id" class="btn btn-primary float-right">More Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
+
+<template id="products-new-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>New Product</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Name:</label> 
+        <input type="text" class="form-control" v-model="name">
+      </div>
+      <div class="form-group">
+        <label>Price:</label>
+        <input type="text" class="form-control" v-model="price">
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="description">
+      </div>
+      <div class="form-group">
+        <label>Supplier ID:</label>
+        <input type="text" class="form-control" v-model="supplierId">
+      </div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+
+  </div>
+</template>
+
+<template id="products-show-page">
+  <div class="vue-component">
+    <div class="container">
+    <h1>{{ product.name }}</h1>
+    <h4>Description: {{ product.description }}</h4>
+    <h3>Price: {{ product.price }}</h3>
+    <a v-bind:href="'/#/products/' + product.id + '/edit'" class="btn btn-success">Edit Product</a>
+    <a v-bind:href="'/#/products/' + product.id + '/delete'" class="btn btn-danger">Delete Product</a>
+    </div>
+  </div>
+</template>
+
+<template id="products-edit-page">
+  <div class="vue-component">
+
+    <div class="container">
+      <h1>Product To Be Edited {{ product.name }}</h1>
+      <ul>
+        <li class="text-danger" v-for="error in errors">{{ error }}</li>
+      </ul>
+      <div class="form-group">
+        <label>Name:</label> 
+        <input type="text" class="form-control" v-model="name">
+      </div>
+      <div class="form-group">
+        <label>Price:</label>
+        <input type="text" class="form-control" v-model="price">
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <input type="text" class="form-control" v-model="description">
+      </div>
+      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
+    </div>
+
+  </div>
+</template>
+
+<!-- Authorization Templates -->
 
 <template id="signup-page">
   <div class="vue-component">
@@ -136,58 +220,3 @@
   </div>
 </template>
 
-<template id="products-new-page">
-  <div class="vue-component">
-
-    <div class="container">
-      <h1>New Product</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Name:</label> 
-        <input type="text" class="form-control" v-model="name">
-      </div>
-      <div class="form-group">
-        <label>Price:</label>
-        <input type="text" class="form-control" v-model="price">
-      </div>
-      <div class="form-group">
-        <label>Description:</label>
-        <input type="text" class="form-control" v-model="description">
-      </div>
-      <div class="form-group">
-        <label>Supplier ID:</label>
-        <input type="text" class="form-control" v-model="supplierId">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-    </div>
-
-  </div>
-</template>
-
-<template id="products-edit-page">
-  <div class="vue-component">
-
-    <div class="container">
-      <h1>Product To Be Edited (6)</h1>
-      <ul>
-        <li class="text-danger" v-for="error in errors">{{ error }}</li>
-      </ul>
-      <div class="form-group">
-        <label>Name:</label> 
-        <input type="text" class="form-control" v-model="name">
-      </div>
-      <div class="form-group">
-        <label>Price:</label>
-        <input type="text" class="form-control" v-model="price">
-      </div>
-      <div class="form-group">
-        <label>Description:</label>
-        <input type="text" class="form-control" v-model="description">
-      </div>
-      <button class="btn btn-primary" v-on:click="submit()">Submit</button>
-    </div>
-
-  </div>
-</template>
